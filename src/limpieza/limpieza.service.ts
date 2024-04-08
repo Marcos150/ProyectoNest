@@ -46,7 +46,7 @@ export class LimpiezaService {
     try {
       const ultLimp = (await this.habitacionModel.findById(id)).ultimaLimpieza;
       const today = new Date();
-      return ultLimp.getDay() == today.getDay() &&
+      return ultLimp.getDate() == today.getDate() &&
         ultLimp.getMonth() == today.getMonth() &&
         today.getFullYear() == today.getFullYear()
         ? { ok: true }
