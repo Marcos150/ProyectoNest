@@ -11,8 +11,6 @@ export class UsuarioService {
   ) {}
 
   async buscar(login: string, password: string): Promise<Usuario | undefined> {
-    return this.usuarioModel.findOne(
-      (u) => u.login === login && u.password === password,
-    );
+    return this.usuarioModel.findOne({ login: login, password: password });
   }
 }
