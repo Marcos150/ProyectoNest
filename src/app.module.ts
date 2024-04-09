@@ -4,6 +4,8 @@ import { AppService } from './app.service';
 import { LimpiezaModule } from './limpieza/limpieza.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { UsuarioModule } from './usuario/usuario.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -17,6 +19,8 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
           : 'mongodb://127.0.0.1/hotel',
       }),
     }),
+    UsuarioModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
