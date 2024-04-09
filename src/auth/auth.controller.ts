@@ -8,6 +8,10 @@ export class AuthController {
 
   @Post('login')
   async login(@Body() usuarioDto: UsuarioDto) {
-    return this.authService.login(usuarioDto.login, usuarioDto.password);
+    const token = await this.authService.login(
+      usuarioDto.login,
+      usuarioDto.password,
+    );
+    return { ok: true, resultado: token };
   }
 }
