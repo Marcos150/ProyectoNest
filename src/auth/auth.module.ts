@@ -3,15 +3,17 @@ import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
 import { UsuarioModule } from 'src/usuario/usuario.module';
 import { JwtModule } from '@nestjs/jwt';
-import { ConfigService } from '@nestjs/config';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 
 @Module({
   imports: [
     UsuarioModule,
     JwtModule.registerAsync({
+      imports: [ConfigModule],
+      inject: [ConfigService],
+      // Para no tener que importar el módulo en cada componente
+      global: true,
       useFactory: async (config: ConfigService) => ({
-        // Para no tener que importar el módulo en cada componente
-        global: true,
         //Palabra secreta
         secret: config.get<string>('SECRET')
           ? config.get<string>('SECRET')
