@@ -28,7 +28,7 @@ export class LimpiezaService {
             ok: false,
             resultado: 'Error: La id de habitación "' + id + '" no es válida',
           },
-          HttpStatus.NOT_FOUND,
+          HttpStatus.BAD_REQUEST,
         );
       } else {
         throw new HttpException(
