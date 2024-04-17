@@ -1,6 +1,7 @@
-import { IsDateString, IsMongoId } from 'class-validator';
+import { IsDateString, IsEmpty, IsMongoId } from 'class-validator';
 import mongoose from 'mongoose';
 export class CreateLimpiezaDto {
+  @IsEmpty({ message: 'La fecha no puede estar vacía' })
   @IsDateString(
     {},
     { message: 'El formato de fecha es inadecuado (yyyy-mm-dd)' },
