@@ -11,7 +11,7 @@ import { AuthModule } from './auth/auth.module';
   imports: [
     LimpiezaModule,
     MongooseModule.forRootAsync({
-      imports: [ConfigModule],
+      imports: [ConfigModule.forRoot()],
       inject: [ConfigService],
       useFactory: async (config: ConfigService) => ({
         uri: config.get<string>('HOST')
