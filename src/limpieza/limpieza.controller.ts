@@ -34,6 +34,11 @@ export class LimpiezaController {
     return this.limpiezaService.findAll(id);
   }
 
+  @Get('')
+  getAll() {
+    return this.limpiezaService.getAll();
+  }
+
   @ApiBearerAuth()
   @UseGuards(AuthGuard)
   @Post()

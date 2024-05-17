@@ -42,6 +42,21 @@ export class LimpiezaService {
     }
   }
 
+  async getAll() {
+    try {
+      const limpiezas = await this.limpiezaModel.find();
+      return { ok: true, resultado: limpiezas };
+    } catch (e) {
+      throw new HttpException(
+        {
+          ok: false,
+          resultado: 'Error genérico',
+        },
+        HttpStatus.INTERNAL_SERVER_ERROR,
+      );
+    }
+  }
+
   async isCleansedToday(id: string) {
     try {
       const ultLimp = (await this.habitacionModel.findById(id)).ultimaLimpieza;
